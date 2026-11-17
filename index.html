@@ -143,6 +143,46 @@ dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
 </details>
 </div>
 </article>
+<article style="margin-top: 32px; display: flex; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #E3E7EC; border-radius: 20px; overflow: hidden">
+<div class="photos-pending" style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px; box-sizing: border-box">
+<div style="width: 100%; aspect-ratio: 3 / 2; border-radius: 14px; background: #E9EFEA; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #3D4A5C">
+<svg role="img" aria-label="Ilustrácia pozemku" width="120" height="84" viewBox="0 0 120 84" fill="none" stroke="#0B6E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 70 34 40l18 18 22-26 40 38"></path><path d="M4 78h112"></path><circle cx="92" cy="18" r="8"></circle></svg>
+<span style="font-size: 15px; font-weight: 500">Fotky pozemku čoskoro doplníme</span>
+</div>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 32px; box-sizing: border-box">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #F4F6F8; font-size: 13px; font-weight: 600; color: #3D4A5C">Predaj</span>
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em">Rovinatý stavebný pozemok s výmerou 1 000 m²</h3>
+<p style="margin: 0; color: #4A5668; font-size: 15px">Veľký Grob · okres Galanta</p>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">95 000 €</p>
+<p style="margin: 0; color: #4A5668; font-size: 14px">V cene je provízia a kompletný právny servis vrátane vkladu do katastra.</p>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 16px 0; border-top: 1px solid #E3E7EC; border-bottom: 1px solid #E3E7EC">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Výmera</dt><dd style="margin: 0; font-weight: 600">1 000 m²</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Typ</dt><dd style="margin: 0; font-weight: 600">Stavebný pozemok</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Terén</dt><dd style="margin: 0; font-weight: 600">Rovinatý</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Inžinierske siete</dt><dd style="margin: 0; font-weight: 600">V dosahu pozemku</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Diaľnica D1</dt><dd style="margin: 0; font-weight: 600">Približne 8 minút</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Senec</dt><dd style="margin: 0; font-weight: 600">Približne 10 km</dd></div>
+</dl>
+<p style="margin: 0; color: #3D4A5C; font-size: 16px">Priestranný rovný pozemok v pokojnej obci, vhodný na rodinný dom s veľkou záhradou alebo ako investícia. V obci je škola, škôlka, zdravotné stredisko aj obchod, do Senca, Bratislavy aj Trnavy je to blízko.</p>
+<details class="obhliadka">
+<summary style="display: inline-block; padding: 14px 24px; border-radius: 12px; background: #0B6E4F; color: #FFFFFF; font-weight: 600; cursor: pointer">Mám záujem o obhliadku</summary>
+<form name="obhliadka" method="POST" action="/dakujem.html" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px; padding: 20px; border: 1px solid #E3E7EC; border-radius: 14px; background: #F4F6F8">
+<input type="hidden" name="form-name" value="obhliadka">
+<input type="hidden" name="nehnutelnost" value="Stavebný pozemok 1 000 m², Veľký Grob, 95 000 €">
+<p hidden><label>Toto pole nevypĺňajte: <input name="bot-field"></label></p>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="g-meno" style="font-size: 14px; font-weight: 500">Vaše meno</label><input id="g-meno" name="meno" type="text" required autocomplete="name" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="g-tel" style="font-size: 14px; font-weight: 500">Telefón</label><input id="g-tel" name="telefon" type="tel" required autocomplete="tel" placeholder="+421" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="g-email" style="font-size: 14px; font-weight: 500">E-mail (nepovinné)</label><input id="g-email" name="email" type="email" autocomplete="email" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="g-sprava" style="font-size: 14px; font-weight: 500">Kedy by vám obhliadka vyhovovala? (nepovinné)</label><textarea id="g-sprava" name="sprava" rows="3" style="padding: 10px 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; font-family: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea></div>
+<button type="submit" style="height: 48px; border: 0; border-radius: 12px; background: #0B6E4F; color: #FFFFFF; font-size: 16px; font-weight: 600; cursor: pointer">Odoslať žiadosť o obhliadku</button>
+<p style="margin: 0; font-size: 13px; color: #4A5668">Alebo zavolajte rovno na <a href="tel:+421902643677" style="text-decoration: underline">0902 643 677</a>. Odoslaním beriete na vedomie <a href="/ochrana-udajov.html" style="text-decoration: underline">spracovanie osobných údajov</a>.</p>
+</form>
+</details>
+</div>
+</article>
 </div>
 </section>
 
@@ -370,7 +410,7 @@ dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
   });
 })();
 </script>
-<dialog id="lightbox" aria-label="Fotky bytu">
+<dialog id="lightbox" aria-label="Fotky nehnuteľnosti">
 <figure>
 <img id="lb-img" src="" alt="">
 <figcaption id="lb-cap"></figcaption>
@@ -399,9 +439,11 @@ dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
     count.textContent = (current + 1) + ' / ' + thumbs.length;
   }
 
-  thumbs.forEach(function (t, n) {
+  thumbs.forEach(function (t) {
     t.addEventListener('click', function () {
-      show(n);
+      var group = t.closest('article') || document;
+      thumbs = Array.prototype.slice.call(group.querySelectorAll('.lb-thumb'));
+      show(thumbs.indexOf(t));
       dlg.showModal();
       document.documentElement.style.overflow = 'hidden';
     });
