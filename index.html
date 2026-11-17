@@ -79,6 +79,21 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid 
 <label for="adresa" style="font-size: 14px; font-weight: 500">Obec a ulica</label>
 <input id="adresa" name="adresa" type="text" required placeholder="napr. Hlavná 12, Pezinok" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box">
 </div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><label for="vymera" style="font-size: 14px; font-weight: 500">Výmera v m² (nepovinné)</label><input id="vymera" name="vymera-m2" type="number" min="1" inputmode="decimal" placeholder="napr. 68" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%; background: #FFFFFF; color: #0F1B2D"></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><label for="stav" style="font-size: 14px; font-weight: 500">Stav (nepovinné)</label><select id="stav" name="stav" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%; background: #FFFFFF; color: #0F1B2D">
+<option value="">Vyberte</option>
+<option>Novostavba</option>
+<option>Po rekonštrukcii</option>
+<option>Pôvodný stav</option>
+<option>Na rekonštrukciu</option>
+</select></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="popis" style="font-size: 14px; font-weight: 500">Popis nehnuteľnosti (nepovinné)</label>
+<textarea id="popis" name="popis" rows="4" placeholder="Napr. počet izieb, poschodie, rok výstavby, balkón alebo záhrada, parkovanie, pivnica, čo je nové…" style="padding: 10px 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; font-family: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea>
+<span style="font-size: 13px; color: #4A5668">Čím viac toho napíšete, tým presnejší odhad vám pripravím.</span>
+</div>
 <div style="display: flex; flex-direction: column; gap: 6px">
 <label for="meno" style="font-size: 14px; font-weight: 500">Vaše meno</label>
 <input id="meno" name="meno" type="text" required autocomplete="name" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box">
