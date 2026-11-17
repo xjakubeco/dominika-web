@@ -62,7 +62,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid 
 </div>
 
 <div style="flex: 1 1 400px; min-width: 0; max-width: 480px; background: #FFFFFF; border: 1px solid #E3E7EC; border-radius: 20px; padding: 32px; box-sizing: border-box; box-shadow: 0 12px 32px rgba(15,27,45,0.08)">
-<form name="ocenenie" method="POST" action="/dakujem.html" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 18px">
+<form name="ocenenie" method="POST" action="/dakujem.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 18px">
 <input type="hidden" name="form-name" value="ocenenie">
 <p hidden><label>Toto pole nevypĺňajte: <input name="bot-field"></label></p>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em">Chcem bezplatné ocenenie</h2>
@@ -93,6 +93,12 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid 
 <label for="popis" style="font-size: 14px; font-weight: 500">Popis nehnuteľnosti (nepovinné)</label>
 <textarea id="popis" name="popis" rows="4" placeholder="Napr. počet izieb, poschodie, rok výstavby, balkón alebo záhrada, parkovanie, pivnica, čo je nové…" style="padding: 10px 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; font-family: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea>
 <span style="font-size: 13px; color: #4A5668">Čím viac toho napíšete, tým presnejší odhad vám pripravím.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="fotky-vyber" style="font-size: 14px; font-weight: 500">Fotky nehnuteľnosti (nepovinné, najviac 6)</label>
+<input id="fotky-vyber" type="file" accept="image/*" multiple style="font-size: 15px; padding: 10px; border: 1px dashed #B9C1CC; border-radius: 10px; background: #FFFFFF; box-sizing: border-box; width: 100%">
+<span id="fotky-info" aria-live="polite" style="font-size: 13px; color: #4A5668">Fotky pred odoslaním automaticky zmenším, aby sa odoslali rýchlo.</span>
+<div hidden><input type="file" name="foto1"><input type="file" name="foto2"><input type="file" name="foto3"><input type="file" name="foto4"><input type="file" name="foto5"><input type="file" name="foto6"></div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 6px">
 <label for="meno" style="font-size: 14px; font-weight: 500">Vaše meno</label>
@@ -240,5 +246,78 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid 
 
 </div>
 
+<script>
+(function () {
+  var form = document.querySelector('form[name="ocenenie"]');
+  if (!form || !window.fetch || !window.FormData || !window.Promise) return;
+  var picker = document.getElementById('fotky-vyber');
+  var info = document.getElementById('fotky-info');
+  var btn = form.querySelector('button[type="submit"]');
+  var MAX = 6;
+  var DEFAULT_INFO = info.textContent;
+
+  picker.addEventListener('change', function () {
+    var n = picker.files.length;
+    if (n > MAX) info.textContent = 'Vybrali ste ' + n + ' fotiek, odošle sa prvých ' + MAX + '.';
+    else if (n === 1) info.textContent = 'Vybraná 1 fotka.';
+    else if (n > 1) info.textContent = 'Vybrané fotky: ' + n + '.';
+    else info.textContent = DEFAULT_INFO;
+  });
+
+  function shrink(file, maxSide, quality) {
+    return new Promise(function (resolve) {
+      if (!/^image\//.test(file.type)) { resolve(null); return; }
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        var scale = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.naturalWidth * scale);
+        canvas.height = Math.round(img.naturalHeight * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+        canvas.toBlob(function (blob) { resolve(blob); }, 'image/jpeg', quality);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
+
+  async function build(files, maxSide, quality) {
+    var data = new FormData(form);
+    var total = 0;
+    for (var i = 0; i < files.length; i++) {
+      var blob = await shrink(files[i], maxSide, quality);
+      if (blob) {
+        data.set('foto' + (i + 1), blob, 'foto' + (i + 1) + '.jpg');
+        total += blob.size;
+      }
+    }
+    return { data: data, total: total };
+  }
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Odosielam…';
+    try {
+      var files = Array.prototype.slice.call(picker.files, 0, MAX);
+      var result = await build(files, 1600, 0.8);
+      if (result.total > 6500000) result = await build(files, 1200, 0.7);
+      if (result.total > 7500000) throw new Error('too-big');
+      var response = await fetch('/', { method: 'POST', body: result.data });
+      if (!response.ok) throw new Error('http ' + response.status);
+      window.location.href = '/dakujem.html';
+    } catch (err) {
+      info.textContent = err.message === 'too-big'
+        ? 'Fotky sú spolu príliš veľké. Skúste ich vybrať menej.'
+        : 'Odoslanie sa nepodarilo. Skúste to znova alebo zavolajte na 0902 643 677.';
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+})();
+</script>
 </body>
 </html>
