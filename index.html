@@ -41,6 +41,19 @@ h1,h2,h3{line-height:1.15}
 .portret{height:340px!important}
 }
 @media (min-width:900px){.oc-intro{position:sticky;top:32px}}
+
+.lb-thumb img{transition:opacity .15s}.lb-thumb:hover img{opacity:.88}
+.lb-thumb:focus-visible{outline:3px solid #0B6E4F;outline-offset:2px}
+dialog#lightbox{padding:0;border:0;background:transparent;width:100vw;height:100vh;max-width:100vw;max-height:100vh;overflow:hidden}
+dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
+#lightbox figure{margin:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:64px 88px;box-sizing:border-box}
+#lb-img{max-width:100%;max-height:calc(100vh - 160px);object-fit:contain;border-radius:8px;user-select:none}
+#lb-cap{color:#FFFFFF;font-size:15px;text-align:center}
+.lb-btn{position:absolute;width:52px;height:52px;border-radius:999px;border:0;background:rgba(255,255,255,.14);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-btn:hover{background:rgba(255,255,255,.28)}.lb-btn:focus-visible{outline:2px solid #FFFFFF;outline-offset:2px}
+.lb-close{top:16px;right:16px}.lb-prev{left:20px;top:50%;transform:translateY(-50%)}.lb-next{right:20px;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;top:30px;left:24px;color:#C9D1DC;font-size:14px}
+@media (max-width:760px){#lightbox figure{padding:72px 12px 96px}#lb-img{max-height:calc(100vh - 220px)}.lb-prev,.lb-next{top:auto;bottom:20px;transform:none}.lb-prev{left:calc(50% - 64px)}.lb-next{right:calc(50% - 64px)}}
 </style>
 </head>
 <body>
@@ -89,12 +102,12 @@ h1,h2,h3{line-height:1.15}
 </div>
 <article style="display: flex; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #E3E7EC; border-radius: 20px; overflow: hidden">
 <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px; box-sizing: border-box">
-<img src="img/obyvacka.jpg" alt="Obývacia izba prepojená s kuchyňou" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 14px; display: block">
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Obývacia izba prepojená s kuchyňou" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/obyvacka.jpg" alt="Obývacia izba prepojená s kuchyňou" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 14px; display: block"></button>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
-<img src="img/obyvacka2.jpg" loading="lazy" alt="Denná časť s výstupom do predzáhradky" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block">
-<img src="img/spalna.jpg" loading="lazy" alt="Spálňová časť" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block">
-<img src="img/terasa.jpg" loading="lazy" alt="Súkromná predzáhradka s terasou" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block">
-<img src="img/dom.jpg" loading="lazy" alt="Bytový dom v projekte Tri Vody" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block">
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Denná časť s výstupom do predzáhradky" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/obyvacka2.jpg" loading="lazy" alt="Denná časť s výstupom do predzáhradky" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Spálňová časť" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/spalna.jpg" loading="lazy" alt="Spálňová časť" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Súkromná predzáhradka s terasou" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/terasa.jpg" loading="lazy" alt="Súkromná predzáhradka s terasou" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Bytový dom v projekte Tri Vody" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/dom.jpg" loading="lazy" alt="Bytový dom v projekte Tri Vody" style="width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; display: block"></button>
 </div>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 32px; box-sizing: border-box">
@@ -354,6 +367,67 @@ h1,h2,h3{line-height:1.15}
       btn.disabled = false;
       btn.textContent = label;
     }
+  });
+})();
+</script>
+<dialog id="lightbox" aria-label="Fotky bytu">
+<figure>
+<img id="lb-img" src="" alt="">
+<figcaption id="lb-cap"></figcaption>
+</figure>
+<span class="lb-count" id="lb-count" aria-live="polite"></span>
+<button type="button" class="lb-btn lb-prev" aria-label="Predchádzajúca fotka"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></button>
+<button type="button" class="lb-btn lb-next" aria-label="Ďalšia fotka"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></button>
+<button type="button" class="lb-btn lb-close" aria-label="Zavrieť"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+</dialog>
+<script>
+(function () {
+  var dlg = document.getElementById('lightbox');
+  var thumbs = Array.prototype.slice.call(document.querySelectorAll('.lb-thumb'));
+  if (!dlg || !dlg.showModal || !thumbs.length) return;
+  var img = document.getElementById('lb-img');
+  var cap = document.getElementById('lb-cap');
+  var count = document.getElementById('lb-count');
+  var current = 0;
+
+  function show(n) {
+    current = (n + thumbs.length) % thumbs.length;
+    var src = thumbs[current].querySelector('img');
+    img.src = src.src;
+    img.alt = src.alt;
+    cap.textContent = src.alt;
+    count.textContent = (current + 1) + ' / ' + thumbs.length;
+  }
+
+  thumbs.forEach(function (t, n) {
+    t.addEventListener('click', function () {
+      show(n);
+      dlg.showModal();
+      document.documentElement.style.overflow = 'hidden';
+    });
+  });
+
+  dlg.addEventListener('close', function () { document.documentElement.style.overflow = ''; });
+  dlg.querySelector('.lb-prev').addEventListener('click', function () { show(current - 1); });
+  dlg.querySelector('.lb-next').addEventListener('click', function () { show(current + 1); });
+  dlg.querySelector('.lb-close').addEventListener('click', function () { dlg.close(); });
+
+  dlg.addEventListener('click', function (e) {
+    if (e.target === dlg || e.target.tagName === 'FIGURE') dlg.close();
+  });
+
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+  });
+
+  var startX = null;
+  dlg.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    startX = null;
   });
 })();
 </script>
