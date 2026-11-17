@@ -144,11 +144,16 @@ dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
 </div>
 </article>
 <article style="margin-top: 32px; display: flex; flex-wrap: wrap; background: #FFFFFF; border: 1px solid #E3E7EC; border-radius: 20px; overflow: hidden">
-<div class="photos-pending" style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px; box-sizing: border-box">
-<div style="width: 100%; aspect-ratio: 3 / 2; border-radius: 14px; background: #E9EFEA; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #3D4A5C">
-<svg role="img" aria-label="Ilustrácia pozemku" width="120" height="84" viewBox="0 0 120 84" fill="none" stroke="#0B6E4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 70 34 40l18 18 22-26 40 38"></path><path d="M4 78h112"></path><circle cx="92" cy="18" r="8"></circle></svg>
-<span style="font-size: 15px; font-weight: 500">Fotky pozemku čoskoro doplníme</span>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px; box-sizing: border-box">
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Hranice pozemku vyznačené na leteckej fotke" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-1.jpg" alt="Hranice pozemku vyznačené na leteckej fotke" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; display: block"></button>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px">
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Letecký pohľad na pozemok a okolie" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-2.jpg" loading="lazy" alt="Letecký pohľad na pozemok a okolie" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Pozemok pri ceste, v pozadí obec Veľký Grob" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-3.jpg" loading="lazy" alt="Pozemok pri ceste, v pozadí obec Veľký Grob" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Hranice pozemku z pohľadu od cesty" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-4.jpg" loading="lazy" alt="Hranice pozemku z pohľadu od cesty" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Vizualizácia: možné využitie pozemku – dva rodinné domy s bazénom" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-5.jpg" loading="lazy" alt="Vizualizácia: možné využitie pozemku – dva rodinné domy s bazénom" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block"></button>
+<button type="button" class="lb-thumb" aria-label="Zväčšiť fotku: Vizualizácia: možné využitie pozemku – moderný rodinný dom s bazénom" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px"><img src="img/pozemok-6.jpg" loading="lazy" alt="Vizualizácia: možné využitie pozemku – moderný rodinný dom s bazénom" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block"></button>
 </div>
+<p style="margin: 4px 4px 0; font-size: 13px; color: #4A5668">Posledné dve fotky sú vizualizácie možného využitia pozemku.</p>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 32px; box-sizing: border-box">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #F4F6F8; font-size: 13px; font-weight: 600; color: #3D4A5C">Predaj</span>
@@ -160,9 +165,9 @@ dialog#lightbox::backdrop{background:rgba(8,12,20,.97)}
 </div>
 <dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 16px 0; border-top: 1px solid #E3E7EC; border-bottom: 1px solid #E3E7EC">
 <div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Výmera</dt><dd style="margin: 0; font-weight: 600">1 000 m²</dd></div>
-<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Typ</dt><dd style="margin: 0; font-weight: 600">Stavebný pozemok</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Určenie</dt><dd style="margin: 0; font-weight: 600">Pre rodinné domy</dd></div>
 <div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Terén</dt><dd style="margin: 0; font-weight: 600">Rovinatý</dd></div>
-<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Inžinierske siete</dt><dd style="margin: 0; font-weight: 600">V dosahu pozemku</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Siete pri pozemku</dt><dd style="margin: 0; font-weight: 600">Voda, elektrina 380 V, plyn</dd></div>
 <div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Diaľnica D1</dt><dd style="margin: 0; font-weight: 600">Približne 8 minút</dd></div>
 <div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Senec</dt><dd style="margin: 0; font-weight: 600">Približne 10 km</dd></div>
 </dl>
