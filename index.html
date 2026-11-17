@@ -14,6 +14,9 @@ body{margin:0;font-family:Inter,system-ui,sans-serif;color:#0F1B2D;background:#F
 a{color:#0F1B2D;text-decoration:none}a:hover{color:#3D4A5C}
 a.light:hover{color:#FFFFFF;text-decoration:underline}
 input,select,button{font-family:inherit}
+details.obhliadka>summary{list-style:none}details.obhliadka>summary::-webkit-details-marker{display:none}
+details.obhliadka>summary:hover{background:#095A41}details[open].obhliadka>summary{background:#0F1B2D}
+textarea:focus,summary:focus-visible{outline:2px solid #0F1B2D;outline-offset:2px}
 input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid #0F1B2D;outline-offset:2px}
 </style>
 </head>
@@ -143,7 +146,20 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid 
 <div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #4A5668">Podlažie</dt><dd style="margin: 0; font-weight: 600">Prízemie</dd></div>
 </dl>
 <p style="margin: 0; color: #3D4A5C; font-size: 16px">Otvorená denná časť s kuchyňou, samostatná spálňová časť a vlastná predzáhradka s terasou. V projekte je jazero na kúpanie a na obchvat D4/R7 je to približne 6 minút.</p>
-<a href="tel:+421902643677" style="align-self: flex-start; padding: 14px 24px; border-radius: 12px; background: #0B6E4F; color: #FFFFFF; font-weight: 600">Mám záujem o obhliadku</a>
+<details class="obhliadka">
+<summary style="display: inline-block; padding: 14px 24px; border-radius: 12px; background: #0B6E4F; color: #FFFFFF; font-weight: 600; cursor: pointer">Mám záujem o obhliadku</summary>
+<form name="obhliadka" method="POST" action="/dakujem.html" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px; padding: 20px; border: 1px solid #E3E7EC; border-radius: 14px; background: #F4F6F8">
+<input type="hidden" name="form-name" value="obhliadka">
+<input type="hidden" name="nehnutelnost" value="1,5-izbový byt s predzáhradkou, Malinovo – Tri Vody, 175 000 €">
+<p hidden><label>Toto pole nevypĺňajte: <input name="bot-field"></label></p>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="o-meno" style="font-size: 14px; font-weight: 500">Vaše meno</label><input id="o-meno" name="meno" type="text" required autocomplete="name" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="o-tel" style="font-size: 14px; font-weight: 500">Telefón</label><input id="o-tel" name="telefon" type="tel" required autocomplete="tel" placeholder="+421" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="o-email" style="font-size: 14px; font-weight: 500">E-mail (nepovinné)</label><input id="o-email" name="email" type="email" autocomplete="email" style="height: 48px; padding: 0 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; box-sizing: border-box; width: 100%"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="o-sprava" style="font-size: 14px; font-weight: 500">Kedy by vám obhliadka vyhovovala? (nepovinné)</label><textarea id="o-sprava" name="sprava" rows="3" style="padding: 10px 12px; border: 1px solid #B9C1CC; border-radius: 10px; font-size: 16px; font-family: inherit; box-sizing: border-box; width: 100%; resize: vertical"></textarea></div>
+<button type="submit" style="height: 48px; border: 0; border-radius: 12px; background: #0B6E4F; color: #FFFFFF; font-size: 16px; font-weight: 600; cursor: pointer">Odoslať žiadosť o obhliadku</button>
+<p style="margin: 0; font-size: 13px; color: #4A5668">Alebo zavolajte rovno na <a href="tel:+421902643677" style="text-decoration: underline">0902 643 677</a>. Odoslaním beriete na vedomie <a href="/ochrana-udajov.html" style="text-decoration: underline">spracovanie osobných údajov</a>.</p>
+</form>
+</details>
 </div>
 </article>
 </div>
